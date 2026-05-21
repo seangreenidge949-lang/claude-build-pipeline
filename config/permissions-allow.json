@@ -1,0 +1,7 @@
+[
+  "Bash(~/scrapling-env/bin/python3 ~/.claude/scripts/search.py *)",
+  "Bash({{HOME}}/scrapling-env/bin/python3 {{HOME}}/.claude/scripts/search.py *)",
+  "Bash(bash ~/.claude/scripts/check-build-prerequisites.sh *)",
+  "Bash(bash {{HOME}}/.claude/scripts/check-build-prerequisites.sh *)",
+  "mcp__pencil"
+]

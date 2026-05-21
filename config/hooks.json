@@ -1,0 +1,24 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "mcp__pencil__batch_design|mcp__pencil__batch_get|mcp__pencil__set_variables|mcp__pencil__replace_all_matching_properties",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ~/.claude/hooks/pencil-guard.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "mcp__plugin_playwright_playwright__.*",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ~/.claude/hooks/playwright-route-guard.sh",
+          "timeout": 5
+        }
+      ]
+    }
+  ]
+}
