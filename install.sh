@@ -149,6 +149,7 @@ copy_file "$REPO_DIR/scripts/check-build-prerequisites.sh" "$CLAUDE_DIR/scripts/
 chmod +x "$CLAUDE_DIR/scripts/check-build-prerequisites.sh"
 copy_file "$REPO_DIR/scripts/search.py" "$CLAUDE_DIR/scripts/search.py"
 chmod +x "$CLAUDE_DIR/scripts/search.py"
+[ -f "$REPO_DIR/scripts/scrape.py" ] && copy_file "$REPO_DIR/scripts/scrape.py" "$CLAUDE_DIR/scripts/scrape.py" && chmod +x "$CLAUDE_DIR/scripts/scrape.py"
 
 # --- 5. Hooks ---
 echo "🪝 安装 hooks..."
@@ -169,6 +170,13 @@ for subdir in research design plan review implement; do
         [ -f "$f" ] && copy_file_no_overwrite "$f" "$CLAUDE_DIR/memory/details/$subdir/$(basename "$f")"
     done
 done
+# platform-specs（design 阶段 UX 审查用）
+if [ "$INSTALL_DESIGN" = true ] && [ -d "$REPO_DIR/memory/design/platform-specs" ]; then
+    mkdir -p "$CLAUDE_DIR/memory/design/platform-specs"
+    for f in "$REPO_DIR"/memory/design/platform-specs/*.md; do
+        [ -f "$f" ] && copy_file_no_overwrite "$f" "$CLAUDE_DIR/memory/design/platform-specs/$(basename "$f")"
+    done
+fi
 
 # --- 7. Merge settings.json ---
 echo "⚙️  合并 settings.json..."
