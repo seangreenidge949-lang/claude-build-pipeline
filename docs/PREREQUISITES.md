@@ -34,6 +34,11 @@
   ```
 - 如果不安装：research 阶段仅使用 WebSearch（英文为主），中文平台搜索不可用
 
+### Superpowers 插件（implement 阶段可选）
+- 用途：`superpowers:subagent-driven-development` skill，实现多 agent 并行编码
+- 安装：Claude Code 插件市场搜索 "superpowers"
+- 如果不安装：implement 阶段仍可使用手动模式（主 agent 逐 task 执行），跳过 subagent 并行模式
+
 ## 安装后检查
 
 运行以下命令验证环境：

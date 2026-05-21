@@ -51,11 +51,17 @@ if [ -d "$CLAUDE_DIR/skills/product-doc" ]; then
     rm -rf "$REPO_DIR/skills/product-doc"
     cp -r "$CLAUDE_DIR/skills/product-doc" "$REPO_DIR/skills/"
 fi
+if [ -d "$CLAUDE_DIR/skills/web-research" ]; then
+    rm -rf "$REPO_DIR/skills/web-research"
+    cp -r "$CLAUDE_DIR/skills/web-research" "$REPO_DIR/skills/"
+fi
 
 # --- 4. Scripts ---
 echo "→ scripts/"
 cp "$CLAUDE_DIR/scripts/check-build-prerequisites.sh" "$REPO_DIR/scripts/"
 chmod +x "$REPO_DIR/scripts/check-build-prerequisites.sh"
+[ -f "$CLAUDE_DIR/scripts/search.py" ] && cp "$CLAUDE_DIR/scripts/search.py" "$REPO_DIR/scripts/"
+chmod +x "$REPO_DIR/scripts/search.py" 2>/dev/null || true
 
 # --- 5. Hooks ---
 echo "→ hooks/"
@@ -66,6 +72,7 @@ chmod +x "$REPO_DIR/hooks/"*.sh 2>/dev/null || true
 # --- 6. Memory (通用经验，排除个人错题) ---
 echo "→ memory/"
 [ -f "$CLAUDE_DIR/memory/details/research/search-strategy.md" ] && cp "$CLAUDE_DIR/memory/details/research/search-strategy.md" "$REPO_DIR/memory/research/"
+[ -f "$CLAUDE_DIR/memory/details/research/scrapling-tips.md" ] && cp "$CLAUDE_DIR/memory/details/research/scrapling-tips.md" "$REPO_DIR/memory/research/"
 [ -f "$CLAUDE_DIR/memory/details/design/pencil-tips.md" ] && cp "$CLAUDE_DIR/memory/details/design/pencil-tips.md" "$REPO_DIR/memory/design/"
 [ -f "$CLAUDE_DIR/memory/details/plan/product-doc-lessons.md" ] && cp "$CLAUDE_DIR/memory/details/plan/product-doc-lessons.md" "$REPO_DIR/memory/plan/"
 [ -f "$CLAUDE_DIR/memory/details/review/user-perspective-validation.md" ] && cp "$CLAUDE_DIR/memory/details/review/user-perspective-validation.md" "$REPO_DIR/memory/review/"

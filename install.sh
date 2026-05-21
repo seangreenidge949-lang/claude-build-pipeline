@@ -136,11 +136,19 @@ if [ -d "$REPO_DIR/skills/product-doc" ]; then
         [ -f "$f" ] && copy_file "$f" "$CLAUDE_DIR/skills/product-doc/${f#$REPO_DIR/skills/product-doc/}"
     done
 fi
+if [ -d "$REPO_DIR/skills/web-research" ]; then
+    mkdir -p "$CLAUDE_DIR/skills/web-research"
+    for f in "$REPO_DIR"/skills/web-research/SKILL.md; do
+        [ -f "$f" ] && copy_file "$f" "$CLAUDE_DIR/skills/web-research/$(basename "$f")"
+    done
+fi
 
 # --- 4. Scripts ---
 echo "⚙️  安装 scripts..."
 copy_file "$REPO_DIR/scripts/check-build-prerequisites.sh" "$CLAUDE_DIR/scripts/check-build-prerequisites.sh"
 chmod +x "$CLAUDE_DIR/scripts/check-build-prerequisites.sh"
+copy_file "$REPO_DIR/scripts/search.py" "$CLAUDE_DIR/scripts/search.py"
+chmod +x "$CLAUDE_DIR/scripts/search.py"
 
 # --- 5. Hooks ---
 echo "🪝 安装 hooks..."
